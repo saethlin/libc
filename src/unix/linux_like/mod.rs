@@ -1974,6 +1974,7 @@ cfg_if! {
 cfg_if! {
     if #[cfg(any(target_env = "gnu", target_os = "android"))] {
         extern "C" {
+            #[cfg_attr(feature = "rustc-dep-of-std", linkage = "extern_weak")]
             pub fn statx(
                 dirfd: c_int,
                 pathname: *const c_char,
